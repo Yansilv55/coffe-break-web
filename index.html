@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Coffe-break.css">
+    <link rel="shortcut icon" href="diamante.png.webp" type="image/x-icon">
+    <title>Diamante Coffee-Break</title>
+</head>
+<body>
+    <div class="main-content">
+        <header>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <h1>Diamante Coffee-Break</h1>
+        </header>
+        
+        <nav class="side-menu" id="sideMenu">
+            <button class="menu-toggle-close" onclick="toggleMenu()">☰</button>
+            <ul>
+                <li><a href="#" onclick="showSection('cadastrar-item')">Cadastrar Item</a></li>
+                <li><a href="#" onclick="showSection('carrinho-certo')">Carrinho</a></li>
+                <li><a href="#" onclick="showSection('user-register')">Cadastro de Usuários</a></li>
+                <button id="logoutButton" onclick="confirmLogout()">Sair</button>
+            </ul>
+        </nav>
+        
+        <section class="cadastrar-item" id="cadastrar-item">
+            <h2>Cadastrar Item</h2>
+            <form id="itemForm">
+                
+                <label for="itemDescription">Descrição:</label>
+                <input type="text" id="itemDescription" placeholder="Digite a descrição do item" required>
+                
+                <input type="submit" value="Cadastrar Item">
+            </form>
+        </section>
+
+        <section class="lista-itens" id="lista-itens">
+            <h2>Fazer pedido</h2>
+            
+            <!-- Barra de busca -->
+            <input type="text" id="searchBar" placeholder="Buscar item..." onkeyup="searchItems()">
+            
+            <!-- Tabela com campos de entrada abaixo dos títulos -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Quantidade</th>
+                        <th>Unidade de Medida</th>
+                    </tr>
+                </thead>
+                <tbody id="itemTable">
+                    <tr>
+                        <td data-label="Descrição">
+                            <input type="text" id="descriptionInput" value="tomate" placeholder="Descrição do item" readonly>
+                        </td>
+                        <td data-label="Quantidade">
+                            <input type="number" id="quantityInput" placeholder="Quantidade" min="1" required>
+                        </td>
+                        <td data-label="Unidade de Medida">
+                            <select id="unitSelect" required>
+                                <option value="UNI">UNI</option>
+                                <option value="LT">LT - Litro</option>
+                                <option value="Cx">Cx - Caixa</option>
+                                <option value="Pc">Pc - Pacote</option>
+                            </select>
+                            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <button class="button-coffe" id="addToCartButton">Adicionar ao Carrinho</button>
+
+            <button class="button-coffe" id="backToCartButton" onclick="showSection('carrinho-certo')">Ver carrinho</button>
+        </section>
+        
+        
+        <section class="carrinho-certo" id="carrinho-certo">
+            <h2>Carrinho</h2>
+            
+            <!-- Tabela onde os produtos adicionados aparecerão -->
+                <table id="cartTable">
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Quantidade</th>
+                            <th>Unidade de Medida</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cartGrid">
+                        <tr>
+                            <td data-label="Descrição">Produto A</td>
+                            <td data-label="Quantidade">10</td>
+                            <td data-label="Unidade de Medida">Unidades</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Descrição">Produto B</td>
+                            <td data-label="Quantidade">5</td>
+                            <td data-label="Unidade de Medida">Kg</td>
+                        </tr>
+                    </tbody>
+                </table>
+           
+            <button class="button-coffe" id="addProductButton">Adicionar Produto</button>
+            <button class="button-coffe" id="finalizeOrderButton">Finalizar Pedido</button>
+        </section>
+        
+
+        <section class="user-register" id="user-register">
+            <button class="close-button" onclick="closeUserRegistration()">X</button>
+            <h2>Cadastrar Usuário</h2>
+            <form>
+                <label for="username">Nome de Usuário</label>
+                <input type="text" id="username" placeholder="Nome de Usuário" required>
+        
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Email" required>
+        
+                <label for="password">Senha</label>
+                <input type="password" id="password" placeholder="Senha" required>
+        
+                <button class="button-coffe" type="submit">Cadastrar</button>
+            </form>
+        </section>
+    </div>
+    <script src="Coffe-break.js"></script>
+</body>
+</html>
